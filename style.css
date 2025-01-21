@@ -1,0 +1,63 @@
+/* Reset default margins and paddings; ensure consistent box-sizing */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Center the box element on the whole page with a black background */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #000;
+}
+
+/* Main container for the rotating box */
+.box {
+  position: relative;
+  width: 250px;
+  height: 249px;
+  transform-style: preserve-3d;
+  animation: animate 20s linear infinite;
+}
+
+/* Keyframes for the box rotation animation */
+@keyframes animate {
+  0% {
+    transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+  }
+
+  100% {
+    transform: perspective(1000px) rotateX(360deg) rotateY(0deg);
+  }
+}
+
+/* Position and transform each span within the box */
+.box span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform-origin: center;
+  transform-style: preserve-3d;
+  transform: rotateX(calc(var(--i) * 45deg)) translateZ(300px);
+}
+
+/* Make sure images fill their span containers */
+.box span img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Style for input elements (if any are present) */
+body input {
+  margin-bottom: 550px;
+  margin-left: 800px;
+}
